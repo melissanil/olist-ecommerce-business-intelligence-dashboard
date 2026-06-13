@@ -151,7 +151,7 @@ df = df[
 if df.empty:
     st.warning("⚠️ Seçilen tarih aralığında veri bulunamadı. Veri seti 2016-2018 yıllarını kapsamaktadır.")
     st.stop()
-    
+
 df["order_delivered_customer_date"] = pd.to_datetime(
     df["order_delivered_customer_date"]
 )
@@ -581,8 +581,35 @@ Bu dashboard Olist E-Commerce veri seti kullanılarak geliştirilmiştir.
 🚚 Ortalama Teslimat Süresi: {avg_delivery:.1f} Gün
 """)
 
+st.markdown("## 💡 İş Önerileri")
 
+if selected_category == "Tümü":
 
+    st.info(f"""
+📦 **{top_category}** kategorisi en yüksek geliri ürettiği için bu kategoriye yönelik kampanyalar artırılabilir.
+
+🌍 **{top_city}** şehri satışların yoğunlaştığı bölgedir. Bölgesel pazarlama stratejileri geliştirilebilir.
+
+🚚 Ortalama teslimat süresi **{avg_delivery:.1f} gün** olarak hesaplanmıştır. Teslimat süreçlerinin optimize edilmesi müşteri memnuniyetini artırabilir.
+
+⚠️ Siparişlerin yaklaşık **%{delay_rate:.1f}** kadarı gecikmiştir. Kargo ve lojistik süreçleri gözden geçirilebilir.
+
+📈 Satış tahmin modeline göre mevcut satış trendi gelecekte de devam etmektedir.
+""")
+
+else:
+
+    st.info(f"""
+📦 Analiz edilen kategori: **{selected_category}**
+
+🌍 En güçlü satış bölgesi: **{top_city}**
+
+🚚 Ortalama teslimat süresi: **{avg_delivery:.1f} gün**
+
+⚠️ Gecikme oranı: **%{delay_rate:.1f}**
+
+📈 Bu kategori için satış performansı düzenli olarak takip edilmelidir.
+""")
 
 
 
